@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 //import Home from './components/Customer/home';
 import Home from './components/Staff/home';
-//import Login from './components/login';
+import Login from './components/login';
 import EmailVerify from './components/EmailVerify';
 
 function App() {
