@@ -11,6 +11,7 @@ import {
     Menu,
     MessageSquare
 } from "lucide-react";
+import CompletedTaskCard from "./TaskCard";
 
 
 const Sidebar = () => {
@@ -33,6 +34,7 @@ const Sidebar = () => {
                         {activePage === "finished" && <Completed />}
                         {activePage === "createTicket" && <CreateTicket />}
                         {activePage === "faq" && <StaffFAQ/>}
+                        {activePage === "reply" && <CompletedTaskCard/>}
                     </div>
                 </div>
             </div>
@@ -71,6 +73,14 @@ const Sidebar = () => {
                     onClick={() => setActivePage("faq")}
                     >
                         FAQ
+                    </button>
+                </li>
+                <li>
+                    <button
+                    className={activePage === "reply" ? "active" : ""}
+                    onClick={() => setActivePage("reply")}
+                    >
+                        Response
                     </button>
                 </li>
                 </ul>
