@@ -1,0 +1,23 @@
+// src/context/FAQContext.js
+import React, { createContext, useState, useContext } from "react";
+
+const FAQContext = createContext();
+
+export const FAQProvider = ({ children }) => {
+  const [faqs, setFaqs] = useState([
+    { id: 1, question: "How to submit a ticket?", answer: "Use the 'Create Ticket' page." },
+  ]);
+
+  const addFAQ = (faq) => setFaqs((prev) => [...prev, { ...faq, id: Date.now() }]);
+  const updateFAQ = (id, updated) =>
+    setFaqs((prev) => prev.map((faq) => (faq.id === id ? { ...faq, ...updated } : faq)));
+  const deleteFAQ = (id) => setFaqs((prev) => prev.filter((faq) => faq.id !== id));
+
+  return (
+    <FAQContext.Provider value={{ faqs, addFAQ, updateFAQ, deleteFAQ }}>
+      {children}
+    </FAQContext.Provider>
+  );
+};
+
+export const useFAQ = () => useContext(FAQContext);
